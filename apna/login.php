@@ -8,7 +8,7 @@
     <body>
         <div class="form">
             <h1>Log In</h1>
-            <form action="login.php" method="post">
+            <form action="controller.php" method="post">
                 <input type="text" name="login-email" placeholder="email" required />
                 <input type="password" name="login-password" placeholder="password" required />
                 <input name="login-button" type="submit" value="Login" />

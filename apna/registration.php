@@ -9,7 +9,7 @@
 
         <div class="form">
             <h1>Registration</h1>
-            <form name="registration-form" action="controller/user-controller.php" method="post">
+            <form name="registration-form" action="controller.php" method="post">
                 <input type="text" name="register-name" placeholder="Full Name" required/>
                 <input type="email" name="register-email" placeholder="Email" required/>
                 <input type="password" name="register-password" placeholder="Password" required/>

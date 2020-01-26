@@ -1,6 +1,6 @@
 <?php
     require_once("dal.php");
-    //require_once("user_model.php");
+    require_once("usermodel.php");
 
         class loginService {
             private static $instance;
@@ -10,13 +10,13 @@
                 $this->dal = dataLayer::getInstance();
             }
 
-            // Initialize instance if not already intitialized. Then returns that instance.
+            // calling/initializing if not already initialized(singleton pattern)
             public static function getInstance() {
             return !self::$instance ? new loginService() : self::$instance;
             }
 
             public function login($email, $password) {
-                $hashedPass = $this->dal->getHashedPass($email);
+                $hashedPass = $this->dal->getPassForUser($email);
 
                 if ($hashedPass && password_verify($password, $hashedPass)) 
                 {
@@ -32,18 +32,20 @@
             public function register($email, $password) {
                 // Validate the email before using it
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    // Check if a user with the same email already exists first
-                    if ($this->dal->doesUserExist($email)) {
+                    // Checking if user already exists or not
+                    if ($this->dal->CheckUserExist($email)) {
                         echo("User with email '$email' already exists.");
                     } else {
-                        echo("User succesfully registered, <a href=\"../index.php\">click here to continue</a>.");
+                        echo("User succesfully registered");
                     }
     
-                    // Register the user in the database
+                    // Register user in db
                     $this->dal->registerUser($email, $password);
                     return true;
                 } else {
                     echo("Invalid email format.");
                 }
             }
+
         }
+?>

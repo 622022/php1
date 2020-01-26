@@ -16,8 +16,7 @@
 
         public function getPassForUser($email)
         {
-            $email = $this->conn->escape_string($email);
-
+            
             $query = $this->conn->prepare("SELECT password FROM users WHERE email = ?");
             $query->bind_param('s', $email);
             $query->execute();
@@ -39,6 +38,25 @@
 
             return $query->affected_rows == 1;
         }
+
+        public function CheckUserExist($email)
+        {
+            $query = $this->conn->prepare("SELECT email FROM users WHERE email = ?");
+            $query->bind_param('s' , "$email");
+            $query->execute();
+            $result = $query->get_result();
+
+            if (!$result)
+            {
+                $error = $this->conn->error;
+                throw new Exception("Database error: '$error'");
+            }
+            else
+            {
+                return $result->num_rows > 0;
+            }
+        }
+
     }
    
 ?>
