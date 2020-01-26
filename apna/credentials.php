@@ -5,6 +5,7 @@
      define('DB_USER', 's622022_user');
      define('DB_DB', 's622022_db');
      define('DB_PASSWORD', 'Phppassword101');
+     define('DB_PORT','3306');
 
      $conn = new mysqli(DB_HOST, DB_USER, DB_DB,DB_PASSWORD);
 
