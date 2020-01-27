@@ -34,7 +34,7 @@
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     // Checking if user already exists or not
                     if ($this->dal->CheckUserExist($email)) {
-                        echo("User with email '$email' already exists.");
+                        echo("User with this email '$email' already exists.");
                     } else {
                         echo("User succesfully registered");
                     }

@@ -5,17 +5,12 @@
 
     if (isset($_POST["login-button"])) {
         try {
-            $loginService->login($_POST['email'], $_POST['password']);
-            //header("Location: dashboard.php");
+            $loginService->login($_POST['login-email'], $_POST['login-password']);
+            header("Location: dashboard.php");
         } catch (Exception $e) {
             echo ("Server error: '$e->message'");
         }
 
-        if ($loginSuccessfull) {
-            echo ("Successfully logged in.");
-        } else {
-            echo ("Invalid login.");
-        }
     } 
     if (isset($_POST["register-button"])) {
         try {

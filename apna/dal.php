@@ -7,7 +7,7 @@
         private $conn;
         
         public function __construct(){
-            $this->conn = mysqli_connect(servername, username, password, databasename);
+            $this->conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_DB);
         }
 
         public static function getInstance() {
@@ -41,7 +41,7 @@
 
         public function CheckUserExist($email)
         {
-            $query = $this->conn->prepare("SELECT email FROM users WHERE email = ?");
+            $query = $this->conn->prepare("SELECT email FROM users WHERE email = ? ");
             $query->bind_param('s' , "$email");
             $query->execute();
             $result = $query->get_result();
