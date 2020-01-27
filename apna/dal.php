@@ -30,10 +30,10 @@
             }
         }
 
-        public function registerUser($email, $password) {
+        public function registerUser($fullname,$email, $password) {
             $user->password = password_hash($user->password, PASSWORD_DEFAULT);
             $query = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-            $query->bind_param('sss', $user->fullname, $user->email, $user->password);
+            $query->bind_param('sss', $fullname, $email, $user->password);
             $query->execute();
 
             return $query->affected_rows == 1;
@@ -42,7 +42,7 @@
         public function CheckUserExist($email)
         {
             $query = $this->conn->prepare("SELECT email FROM users WHERE email = ? ");
-            $query->bind_param('s' , "$email");
+            $query->bind_param('s' , $email);
             $query->execute();
             $result = $query->get_result();
 

@@ -14,10 +14,11 @@
     } 
     if (isset($_POST["register-button"])) {
         try {
-            if ($loginService->register($_POST['register-email'], $_POST['register-name'], $_POST['register-password'])) {
+            if ($loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password'])) {
                 echo("You were succesfully registered");
+                //header("Location: login.php");
             } else {
-                echo("This user already exists, try logging in or request a password reset");
+                echo("The user with this email already exists, try logging in.");
             }
         } catch(Exception $e) {
             echo($e);

@@ -29,7 +29,7 @@
                 }
             }
 
-            public function register($email, $password) {
+            public function register($fullname,$email, $password) {
                 // Validate the email before using it
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     // Checking if user already exists or not
@@ -40,7 +40,7 @@
                     }
     
                     // Register user in db
-                    $this->dal->registerUser($email, $password);
+                    $this->dal->registerUser($fullname,$email, $password);
                     return true;
                 } else {
                     echo("Invalid email format.");
