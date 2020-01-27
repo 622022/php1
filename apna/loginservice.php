@@ -1,6 +1,8 @@
 <?php
     require_once("dal.php");
     require_once("usermodel.php");
+    session_start();
+
 
         class loginService {
             private static $instance;
@@ -21,6 +23,7 @@
                 if ($hashedPass && password_verify($password, $hashedPass)) 
                 {
                     $_SESSION['USER'] = $email;
+                    //$_SESSION["USERNAME"] = $fullname;
                     session_commit();
                     return true;
                 }
