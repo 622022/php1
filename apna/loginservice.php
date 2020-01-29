@@ -1,7 +1,7 @@
 <?php
     require_once("dal.php");
     require_once("usermodel.php");
-    session_start();
+    //session_start();
 
 
         class loginService {

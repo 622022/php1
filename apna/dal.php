@@ -57,6 +57,57 @@
             }
         }
 
+        public function getSearchUsers($searchuser)
+        {
+            $param = "%$searchuser%";
+            $query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM `users` WHERE name LIKE ? ");
+            $query->bind_param('s' , $param);
+            $query->execute();
+            $result = $query->get_result();
+
+            if (!$result)
+            {
+                $error = $this->conn->error;
+                throw new Exception("Database error: '$error'");
+            }
+            else
+            {
+                $users = array();
+                if ($result->num_rows > 0) {
+                    for ($i=0; $i < $result->num_rows; $i++) { 
+                        $users[$i] = $result->fetch_array();
+                    }
+                    return $users;
+                }
+            }
+        }
+
+        public function getAllUsers()
+        {
+            $query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM users");
+            //$query->bind_param('s' , $email);
+            $query->execute();
+            $result = $query->get_result();
+
+            if (!$result)
+            {
+                $error = $this->conn->error;
+                throw new Exception("Database error: '$error'");
+            }
+            else
+            {
+                $users = array();
+                if ($result->num_rows > 0) {
+                    for ($i=0; $i < $result->num_rows; $i++) { 
+                        $users[$i] = $result->fetch_array();
+                    }
+                    return $users;
+                } else {
+                    return false;
+                }
+            }
+        }
+
     }
    
 ?>
