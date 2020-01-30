@@ -27,19 +27,19 @@
         }
     }
 
-    if(isset($_POST["search-button"]))
-    {   try{
-            // if($searchService->searchUsers( $_POST['searchuser']))
-            // {
-            //     header("Location: searchpage.php");
-            // }
-            $searchService->searchAllUsers();
-            header("Location: searchpage.php");
+    // if(isset($_POST["search-button"]))
+    // {   try{
+    //         if($searchService->searchUsers( $_POST['searchuser']))
+    //         {
+    //             header("Location: searchpage.php");
+    //         }
+    //         // $searchService->searchAllUsers();
+    //         // header("Location: searchpage.php");
             
-        }catch(Exception $e) {
-            echo($e);
-        }
+    //     }catch(Exception $e) {
+    //         echo($e);
+    //     }
        
-    }
+    // }
 
 ?>

@@ -12,8 +12,11 @@ $searchService = searchService::getInstance();
         <th>Registration date</th>
         </tr>
             <?php
-                //$searcharray = $searchService->searchUsers($_POST['usersearch']);
-                $searcharray = $searchService->searchAllUsers();
+                $query=$_POST["search-name"];
+                $query1=$_POST["search-email"];
+                $query2=$_POST["search-date"];
+                $searcharray = $searchService->searchUsers($query,$query1,$query2);
+                //$searcharray = $searchService->searchAllUsers();
                 for($x=0; $x < sizeof($searcharray);$x++)
                 {
                         echo"<tr>";

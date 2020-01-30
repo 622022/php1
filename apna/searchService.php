@@ -16,9 +16,9 @@
             return !self::$instance ? new searchService() : self::$instance;
         }
 
-        public function searchUsers($searchuser){
+        public function searchUsers($searchname,$searchuser,$searchdate){
             //call_user_func();
-            return $this->dal->getUsers($searchuser);
+            return $this->dal->getSearchUsers($searchname,$searchuser,$searchdate);
         }
 
         public function searchAllUsers()

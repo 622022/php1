@@ -57,11 +57,14 @@
             }
         }
 
-        public function getSearchUsers($searchuser)
+        public function getSearchUsers($searchname,$searchemail,$searchdate)
         {
-            $param = "%$searchuser%";
-            $query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM `users` WHERE name LIKE ? ");
-            $query->bind_param('s' , $param);
+            $param = "%$searchname%";
+            $param1 = "%$searchemail%";
+            $param2 = "%$searchdate%";
+            //$query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM `users` WHERE name LIKE ? ");
+            $query = $this->conn->prepare("SELECT `name` , email, registration_date FROM `users` WHERE name LIKE ? UNION SELECT `name` , email, registration_date FROM users WHERE email LIKE ? UNION SELECT `name` , email, registration_date FROM users WHERE registration_date LIKE ? ");
+            $query->bind_param('sss' , $param, $param1, $param2);
             $query->execute();
             $result = $query->get_result();
 

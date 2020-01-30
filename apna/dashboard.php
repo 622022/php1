@@ -13,8 +13,10 @@ $searchService = searchService::getInstance();
         <link rel="stylesheet" href="main.css" />
     </head>
     <body>
-        <form action="controller.php" method ="post">
-            <input type="text" name="searchuser">
+        <form action="searchpage.php" method ="post">
+            Username<input type="text" name="search-name">
+            Useremail<input type="text" name="search-email">
+            Register date<input type="text" name="search-date">
             <button type="submit" name="search-button"> Search user</button>  
         </form>
         
