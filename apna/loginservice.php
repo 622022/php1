@@ -20,14 +20,18 @@
             public function login($email, $password) {
                 $hashedPass = $this->dal->getPassForUser($email);
 
-                if ($hashedPass && password_verify($password, $hashedPass)) 
+                //echo("$hashedPass and one we got: $password");
+                $pwdChk= password_verify($password, $hashedPass);
+                if ($pwdChk == true) 
                 {
                     //$_SESSION['USER'] = $email;
                     //$_SESSION["USERNAME"] = $fullname;
                     //session_commit();
+                    session_start();
                     return true;
                 }
                 else{
+                    echo("pswd chk failing");
                     return false;
                 }
             }

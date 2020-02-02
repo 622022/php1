@@ -30,6 +30,7 @@
                 echo("$result->num_rows");
                 //return $result->num_rows > 0;
                 return $result->fetch_row()[0];
+                
             }
         }
 
