@@ -53,6 +53,7 @@
             public function logout() {
                 session_destroy();
                 session_unset();
+                header("login.php");
             }
 
         }
