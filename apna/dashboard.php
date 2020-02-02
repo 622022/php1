@@ -19,5 +19,9 @@ $searchService = searchService::getInstance();
             Register date<input type="text" name="search-date">
             <button type="submit" name="search-button"> Search user</button>  
         </form>
+
+        <form action="controller.php" method="post">
+            <button type="submit" name="logout-btn">Logout</button>
+        </form>
         
     </body>

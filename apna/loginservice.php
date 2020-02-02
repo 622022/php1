@@ -22,9 +22,9 @@
 
                 if ($hashedPass && password_verify($password, $hashedPass)) 
                 {
-                    $_SESSION['USER'] = $email;
+                    //$_SESSION['USER'] = $email;
                     //$_SESSION["USERNAME"] = $fullname;
-                    session_commit();
+                    //session_commit();
                     return true;
                 }
                 else{
@@ -48,6 +48,11 @@
                 } else {
                     echo("Invalid email format.");
                 }
+            }
+
+            public function logout() {
+                session_destroy();
+                session_unset();
             }
 
         }

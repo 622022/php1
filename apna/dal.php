@@ -17,7 +17,7 @@
         public function getPassForUser($email)
         {
             
-            $query = $this->conn->prepare("SELECT password FROM users WHERE email = ?");
+            $query = $this->conn->prepare("SELECT `password` FROM users WHERE email = ?");
             $query->bind_param('s', $email);
             $query->execute();
             $result = $query->get_result();
@@ -26,7 +26,10 @@
                 $error = $this->conn->error;
                 throw new Exception("Database error: '$error'");
             } else {
-                return $result->num_rows > 0;
+                //echo("$result[0]");
+                echo("$result->num_rows");
+                //return $result->num_rows > 0;
+                return $result->fetch_row()[0];
             }
         }
 
