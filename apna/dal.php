@@ -1,5 +1,6 @@
 <?php
     require_once("credentials.php");
+    require_once("usermodel.php");
 
 
     class dataLayer{
@@ -12,6 +13,29 @@
 
         public static function getInstance() {
             return !self::$instance ? new dataLayer() : self::$instance;
+        }
+
+        private function executeQuery($query, $params, ...$variables) {
+            $stmt = $this->conn->prepare($query);
+            if (isset($params) && count($variables) > 0) {
+                $stmt->bind_param($params, ...$variables);
+            }
+            $stmt->execute();
+
+            $error = $this->conn->error;
+            if ($error) {
+                throw new Exception("Database error: '$error'");
+            }
+
+            return $stmt;
+        }
+
+        private function executeSelectQuery($query, $params, ...$variables) {
+            return $this->executeQuery($query, $params, ...$variables)->get_result()->fetch_all(MYSQLI_ASSOC);
+        }
+
+        private function executeEditQuery($query, $params, ...$variables) {
+            return $this->executeQuery($query, $params, ...$variables)->affected_rows;
         }
 
         public function getPassForUser($email)
@@ -34,13 +58,23 @@
             }
         }
 
-        public function registerUser($fullname,$email, $password) {
-            $user->password = password_hash($user->password, PASSWORD_DEFAULT,["salt" => '1234567890123456789012']);
-            $query = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-            $query->bind_param('sss', $fullname, $email, $user->password);
-            $query->execute();
+        public function registerUser($user) {
+            $query = "
+                INSERT INTO users (name, email, password)
+                VALUES (?, ?, ?)
+            ";
 
-            return $query->affected_rows == 1;
+            return $this->executeEditQuery($query, 'sss', $user->fullname, $user->email, $user->password) == 1;
+        }
+
+        public function getHashedPass($email) {
+            $query = "
+                SELECT password
+                FROM users
+                WHERE email = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $email)[0]["password"];
         }
 
         public function CheckUserExist($email)

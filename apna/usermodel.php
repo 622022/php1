@@ -4,7 +4,7 @@
         public $fullname;
         public $password;
 
-        public function __construct($email, $fullname, $password) {
+        public function __construct($fullname,$email, $password) {
             $this->email = $email;
             $this->fullname = $fullname;
             $this->password = $password;
