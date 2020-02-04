@@ -17,7 +17,7 @@
         public function getPassForUser($email)
         {
             
-            $query = $this->conn->prepare("SELECT `password` FROM users WHERE email = ?");
+            $query = $this->conn->prepare("SELECT password FROM users WHERE email = ? ");
             $query->bind_param('s', $email);
             $query->execute();
             $result = $query->get_result();
@@ -35,7 +35,7 @@
         }
 
         public function registerUser($fullname,$email, $password) {
-            $user->password = password_hash($user->password, PASSWORD_DEFAULT);
+            $user->password = password_hash($user->password, PASSWORD_DEFAULT,["salt" => '1234567890123456789012']);
             $query = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
             $query->bind_param('sss', $fullname, $email, $user->password);
             $query->execute();

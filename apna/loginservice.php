@@ -18,22 +18,43 @@
             }
 
             public function login($email, $password) {
+                //$password = password_hash($password, PASSWORD_DEFAULT);
                 $hashedPass = $this->dal->getPassForUser($email);
+                //$hashedPass = '$2y$10$CiDPVSU6BPr7BrEEkKxcveJbwDFQZQplwg/lfT/4qv/Jd2Gf8HZSe';
+                //echo " password is $password \n ";
+                //if($this->dal->getPassForUser($email, $password))
+                // {
+                //     session_start();
+                //     return true;
+                // }
 
-                //echo("$hashedPass and one we got: $password");
-                $pwdChk= password_verify($password, $hashedPass);
-                if ($pwdChk == true) 
+                echo("hashed pass= $hashedPass and one we input: $password \n");
+                $pwdChk = password_verify($password, $hashedPass);
+                echo(" ------- $pwdChk----------");
+                try{
+                $pwdChk = password_verify('1234567', $hashedPass);
+                echo("********************$pwdChk******************");
+                if (password_verify('1234567', '$2y$10$123456789012345678901uhihPb9QpE2n03zMu9TDdvO34jDn6mO') )
                 {
+                    echo("pswd chk suvccess");
+                   
                     //$_SESSION['USER'] = $email;
                     //$_SESSION["USERNAME"] = $fullname;
                     //session_commit();
-                    session_start();
+                    //session_start();
                     return true;
                 }
                 else{
                     echo("pswd chk failing");
+                    //echo(" hash pass: $hashedPass");
+                    //echo(" - check: ". strval($pwdChk));
                     return false;
                 }
+            }
+            catch(Exception $e)
+            {
+                    echo("...............$e..........");
+            }
             }
 
             public function register($fullname,$email, $password) {
@@ -47,6 +68,7 @@
                     }
     
                     // Register user in db
+                    $password='1234567';
                     $this->dal->registerUser($fullname,$email, $password);
                     return true;
                 } else {
