@@ -20,10 +20,12 @@
 
             public function login($email, $password) {
                 $hashedPass = $this->dal->getHashedPass(strtolower($email));
+                $username = $this->dal->getName($email);
+                //$username = $email;
     
                 if ($hashedPass && password_verify($password, $hashedPass)) {
                     session_start();
-                    $_SESSION['USER'] = $email;
+                    $_SESSION['USER'] = $username;
                     return true;
                 } else {
                     echo("bad login");

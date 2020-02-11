@@ -24,9 +24,10 @@
     } 
     if (isset($_POST["register-button"])) {
         $Check=$loginService->CheckUser($_POST['register-email']);
+        $Captcha_chk = $loginService->captcha();
         try {
             if ($_POST['register-password'] == $_POST['register-repassword']) {
-                if($Check==false && $loginService->captcha()){
+                if($Check==false && $Captcha_chk==true){
                     echo("This email already exists. <a href=\"login.php\">Please log in.</a> ");
                 }else{
                     $loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password']);
@@ -63,5 +64,6 @@
             echo($e);
         }
     }
+    
 
 ?>

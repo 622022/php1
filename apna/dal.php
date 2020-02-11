@@ -149,6 +149,17 @@
             }
         }
 
+        public function getName($email)
+        {
+            $query = "
+                SELECT name
+                FROM users
+                WHERE email = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $email)[0]["name"];
+        }
+
     }
    
 ?>

@@ -1,9 +1,8 @@
 <?php
 session_start();
-echo("Successfull!");
+echo ("Welcome ") . $_SESSION['USER'] . "!";
 require_once("searchService.php");
 $searchService = searchService::getInstance();
-//echo $_SESSION["USERNAME"];
 ?>
 <!DOCTYPE html>
 <html>
