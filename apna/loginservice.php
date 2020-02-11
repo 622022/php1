@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js' async defer ></script>
 <?php
     require_once("dal.php");
     require_once("usermodel.php");
@@ -51,6 +52,25 @@
                 }
                 else{
                     return false;
+                }
+            }
+
+            public function captcha()
+            {
+                if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
+                {
+                $secret = '6LcX2NcUAAAAAMmdE7D0avRDRxHG9Osfwkplnbuv';
+                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+                $responseData = json_decode($verifyResponse);
+                    if($responseData->success)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        echo("Captcha unsuccessfull");
+                        return false;
+                    }
                 }
             }
 

@@ -26,7 +26,7 @@
         $Check=$loginService->CheckUser($_POST['register-email']);
         try {
             if ($_POST['register-password'] == $_POST['register-repassword']) {
-                if($Check==false){
+                if($Check==false && $loginService->captcha()){
                     echo("This email already exists. <a href=\"login.php\">Please log in.</a> ");
                 }else{
                     $loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password']);
