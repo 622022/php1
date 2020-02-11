@@ -23,11 +23,18 @@
 
     } 
     if (isset($_POST["register-button"])) {
+        $Check=$loginService->CheckUser($_POST['register-email']);
         try {
-            if ($loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password'])) {
-                echo("You were succesfully registered. <a href=\"login.php\">click here to return</a>.");
+            if ($_POST['register-password'] == $_POST['register-repassword']) {
+                if($Check==false){
+                    echo("This email already exists. <a href=\"login.php\">Please log in.</a> ");
+                }else{
+                    $loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password']);
+                    echo("You were succesfully registered. <a href=\"login.php\">click here to return</a>.");
+                }
+                
             } else {
-                echo("The user with this email already exists, try logging in.");
+                echo("The passwords don't match,try again.");
             }
         } catch(Exception $e) {
             echo($e);

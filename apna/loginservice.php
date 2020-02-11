@@ -31,18 +31,28 @@
             }
 
             public function register($fullname,$email,$password) {
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                if (!$this->dal->CheckUserExist($email)) {
-                    try {
-                        return $this->dal->registerUser(new User($fullname,$email, password_hash($password, PASSWORD_BCRYPT)));
-                    } catch(Exception $e) {
-                        echo($e);
-                    }
+            if (filter_var($email, FILTER_VALIDATE_EMAIL))
+            {   try {
+                    return $this->dal->registerUser(new User($fullname,$email, password_hash($password, PASSWORD_BCRYPT)));
+                } catch(Exception $e) {
+                    echo($e);
                 }
-            } else {
+            }
+            else {
                 throw new Exception("Invalid email format");
             }
-        }
+            }   
+            
+            
+            public function CheckUser($email)
+            {
+                if(!$this->dal->CheckUserExist($email)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
 
             public function logout() {
                 session_destroy();

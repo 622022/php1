@@ -13,6 +13,7 @@
                 <input type="text" name="register-name" placeholder="Full Name" required/>
                 <input type="email" name="register-email" placeholder="Email" required/>
                 <input type="password" name="register-password" placeholder="Password" required/>
+                <input type="password" name="register-repassword" placeholder="Retypepassword" required />
                 <input type="submit" name="register-button" value="Register"/>
             </form>
     </body>
