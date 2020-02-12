@@ -16,9 +16,15 @@
             return !self::$instance ? new searchService() : self::$instance;
         }
 
-        public function searchUsers($searchname,$searchuser,$searchdate){
-            //call_user_func();
-            return $this->dal->getSearchUsers($searchname,$searchuser,$searchdate);
+        public function searchUsers($searchname){
+            
+            if($this->dal->getSearchUsers($searchname))
+            {
+                $this->dal->getSearchUsers($searchname);
+            }
+            else{
+                echo("No user with this name found!");
+            }
         }
 
         public function searchAllUsers()

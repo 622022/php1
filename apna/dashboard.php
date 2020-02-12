@@ -1,9 +1,4 @@
-<?php
-session_start();
-echo ("Welcome ") . $_SESSION['USER'] . "!";
-require_once("searchService.php");
-$searchService = searchService::getInstance();
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,10 +14,17 @@ $searchService = searchService::getInstance();
                 <a href="changeinfo.php">Update info</a>
                 </div>
         </header>
+        <?php
+        session_start();
+        echo ("Welcome ") . $_SESSION['USER'] . "!";
+        require_once("searchService.php");
+        $searchService = searchService::getInstance();
+        ?>
+        <h2>Usres can be searched here!</h2>
         <form action="searchpage.php" method ="post">
-            Username<input type="text" name="search-name">
-            Useremail<input type="text" name="search-email">
-            Register date<input type="text" name="search-date">
+            Username<input type="text" name="search-name" placeholder="Name to be searched" required>
+            <!-- Useremail<input type="text" name="search-email">
+            Register date<input type="text" name="search-date"> -->
             <button type="submit" name="search-button"> Search user</button>  
         </form>
 
