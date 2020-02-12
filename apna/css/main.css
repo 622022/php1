@@ -1,5 +1,7 @@
 body {
     font-family: Arial, Sans-Serif;
+    background-image: url("../images/snow.gif");
+
 }
 
 .clearfix:before, .clearfix:after {
