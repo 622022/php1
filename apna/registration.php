@@ -4,7 +4,7 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <meta charset="utf-8">
         <title>Registration</title>
-        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
 

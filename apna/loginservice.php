@@ -26,6 +26,7 @@
                 if ($hashedPass && password_verify($password, $hashedPass)) {
                     session_start();
                     $_SESSION['USER'] = $username;
+                    $_SESSION['EMAIL'] = $email;
                     return true;
                 } else {
                     echo("bad login");
@@ -75,6 +76,12 @@
                     }
                 }
             }
+
+            public function updateEmail($oldEmail,$newEmail)
+            {
+                $this->dal->changeEmail($oldEmail,$newEmail);
+            }
+            
 
             public function logout() {
                 session_destroy();

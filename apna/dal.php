@@ -160,6 +160,18 @@
             return $this->executeSelectQuery($query, 's', $email)[0]["name"];
         }
 
+        public function changeEmail($oldEmail,$newEmail){
+            $query = "
+            UPDATE users
+            SET email = ?
+            WHERE
+            email = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $newEmail,$oldEmail) == 1;
+
+        }
+
     }
    
 ?>
