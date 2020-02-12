@@ -20,7 +20,7 @@
         require_once("searchService.php");
         $searchService = searchService::getInstance();
         ?>
-        <h2>Usres can be searched here!</h2>
+        <h4>Users can be searched here!</h4>
         <form action="searchpage.php" method ="post">
             Username<input type="text" name="search-name" placeholder="Name to be searched" required>
             <!-- Useremail<input type="text" name="search-email">

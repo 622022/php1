@@ -20,7 +20,7 @@
             
             if($this->dal->getSearchUsers($searchname))
             {
-                $this->dal->getSearchUsers($searchname);
+                return $this->dal->getSearchUsers($searchname);
             }
             else{
                 echo("No user with this name found!");

@@ -97,12 +97,12 @@
 
         public function getSearchUsers($searchname)
         {
-            $param = "%$searchname%";
+            //$param = "%$searchname%";
             //$param1 = "%$searchemail%";
             //$param2 = "%$searchdate%";
             //$query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM `users` WHERE name LIKE ? ");
             $query = $this->conn->prepare("SELECT `name` , email, registration_date FROM `users` WHERE name LIKE ? ");
-            $query->bind_param('s' , $param);
+            $query->bind_param('s' , $searchname);
             $query->execute();
             $result = $query->get_result();
 

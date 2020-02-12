@@ -18,7 +18,7 @@ echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
                 </div>
         </header>
         <form name="changeinfo-form" action="controller.php" method="post">
-                <input type="text" name="change-name" placeholder="Your New Name" required/>
+                <input type="text" name="change-name" placeholder="Your New Name"/>
                 <input type="email" name="new-email" placeholder="Email" required/>
                 <input type="password" name="old-password" placeholder="Password" required/>
                 <input type="password" name="new-repassword" placeholder="Retypepassword" required />
