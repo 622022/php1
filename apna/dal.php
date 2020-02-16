@@ -173,6 +173,17 @@
             return $this->executeEditQuery($query, 'ss', $newEmail,$oldEmail) == 1;
 
         }
+        public function changeName($newName,$userEmail){
+            $query = "
+            UPDATE users
+            SET name = ?
+            WHERE
+            email = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $newName,$userEmail) == 1;
+
+        }
 
     }
    

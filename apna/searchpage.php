@@ -1,9 +1,13 @@
 <?php
 session_start();
 require_once("searchService.php");
+require_once("loginservice.php");
 $searchService = searchService::getInstance();
-//echo $_SESSION["USERNAME"];
+$loginService = loginService::getInstance();
+if ($loginService->checkSession())
+{
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,3 +64,7 @@ $searchService = searchService::getInstance();
                
     </body>
 </html>
+<?php } else{
+    Echo("You are not logged in!<a href=\"login.php\">click here to login again</a>.");
+} 
+?>

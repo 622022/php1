@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+require_once("loginservice.php");
+$loginService = loginService::getInstance();
+if ($loginService->checkSession())
+{
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,10 +21,9 @@
                 </div>
         </header>
         <?php
-        session_start();
+        
         echo ("Welcome ") . $_SESSION['USER'] . "!";
-        require_once("searchService.php");
-        $searchService = searchService::getInstance();
+        
         ?>
         <h4>Users can be searched here!</h4>
         <form action="searchpage.php" method ="post">
@@ -42,6 +47,9 @@
             }
         }
         </script>
-        
+<?php } else{
+    Echo("You are not logged in!<a href=\"login.php\">click here to login again</a>.");
+} 
+?>
     </body>
 </html>

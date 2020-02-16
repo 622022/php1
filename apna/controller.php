@@ -44,10 +44,11 @@
         }
     }
 
-    if(isset($_POST["update-button"])){
+    if(isset($_POST["update-email"])){
         $Check=$loginService->CheckUser($_POST['new-email']);
         $oldEmail=$_SESSION['EMAIL'];
         $newEmail=$_POST['new-email'];
+        
 
         try {
             if (filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
@@ -55,7 +56,7 @@
                 if ($Check == false) {
                     echo("User with email '$newEmail' already exists.");
                 } else {
-                    echo("Email succesfully changed, <a href=\"login.php\">click here to login again</a>.");
+                    echo("Email and name succesfully changed, <a href=\"login.php\">click here to login again</a>.");
                 }
                 // Change the email
                 $loginService->updateEmail($oldEmail, $newEmail);
@@ -65,6 +66,23 @@
             }
         
         } catch(Exception $e) {
+            echo($e);
+        }
+    }
+
+    if(isset($_POST["update-name"])){
+        $oldEmail=$_SESSION['EMAIL'];
+        $newName=$_POST['change-name'];
+        try{
+            if($newName==NULL){
+                Echo("The name can not be null!");
+            }
+            else{
+                $loginService->updateName($newName,$oldEmail);
+                Echo("Name successfully changed to $newName!");
+                echo("<a href=\"changeinfo.php\">Go back</a>.");
+            }
+        }catch(Exception $e) {
             echo($e);
         }
     }

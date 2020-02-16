@@ -63,7 +63,7 @@
                 if (session_status() == PHP_SESSION_ACTIVE) {
                     return isset($_SESSION['USER']) ? $_SESSION['USER'] : null;
                 } else {
-                 return false;
+                    Echo("Log in first!");
                 }
             }
 
@@ -89,6 +89,11 @@
             public function updateEmail($oldEmail,$newEmail)
             {
                 $this->dal->changeEmail($oldEmail,$newEmail);
+            }
+
+            public function updateName($newName,$userEmail)
+            {
+                $this->dal->changeName($newName,$userEmail);
             }
             
 

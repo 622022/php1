@@ -1,6 +1,10 @@
 <?php
 session_start();
 echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
+require_once("loginservice.php");
+$loginService = loginService::getInstance();
+if ($loginService->checkSession())
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,10 +23,9 @@ echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
         </header>
         <form name="changeinfo-form" action="controller.php" method="post">
                 <input type="text" name="change-name" placeholder="Your New Name"/>
-                <input type="email" name="new-email" placeholder="Email" required/>
-                <input type="password" name="old-password" placeholder="Password" required/>
-                <input type="password" name="new-repassword" placeholder="Retypepassword" required />
-                <input type="submit" name="update-button" value="Update"/>
+                <input type="submit" name="update-name" value="Update"/>
+                <input id="check" type="email" name="new-email" placeholder="Email" />
+                <input id="check" type="submit" name="update-email" value="Update"/>
         </form>
 
         <form action="controller.php" method="post">
@@ -31,3 +34,7 @@ echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
         
     </body>
 </html>
+<?php } else{
+    Echo("You are not logged in!<a href=\"login.php\">click here to login again</a>.");
+} 
+?>
