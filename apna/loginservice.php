@@ -115,6 +115,10 @@
                     return true;
                 }
             }
+
+            public function storeToken($email,$token){
+                $this->dal->tokenStore($email,$token);
+            }
             
 
             public function logout() {

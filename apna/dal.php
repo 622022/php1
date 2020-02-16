@@ -86,6 +86,7 @@
 
             if (!$result)
             {
+                return false;
                 $error = $this->conn->error;
                 throw new Exception("Database error: '$error'");
             }
@@ -205,6 +206,17 @@
             ";
 
             return $this->executeSelectQuery($query, 's', $email)[0]["token"];
+        }
+
+        public function tokenStore($email,$token){
+            $query = "
+            UPDATE users
+            SET token = ?
+            WHERE
+            email = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $token,$email) == 1;
         }
 
 

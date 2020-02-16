@@ -97,11 +97,11 @@
         }
     }
 
-    if(isset($_POST["restpass-button"])){
+    if(isset($_POST["reqpass-button"])){
         try{
             $email=$_POST['resetpass-email'];
-            $Check=$loginService->CheckUser($_POST['resetpass-email']);
-            if($Check == true){
+            // $Check=$loginService->CheckUser($_POST['resetpass-email']);
+            // if($Check == false){
                 //checks if the token already exists for the given email
                 if($loginService->checkTokenforEmailExists($email) == false){
                     $token = uniqid("", true);
@@ -119,9 +119,9 @@
                     echo("The token for this email already exists!");
                 }
                 
-            }else{
-                echo("This email does not exist.You can register for this email");
-            }
+            // }else{
+            //     echo("This email does not exist.You can register for this email");
+            // }
         }catch(Exception $e) {
             echo($e);
         }

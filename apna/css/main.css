@@ -73,3 +73,9 @@ input[type='submit'] {
     background-color: #4CAF50;
     color: white;
   }
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}
