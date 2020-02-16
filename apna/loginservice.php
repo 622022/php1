@@ -95,6 +95,26 @@
             {
                 $this->dal->changeName($newName,$userEmail);
             }
+
+            public function CheckifSameTokenExists($token){
+                $result=$this->dal->checkSameToken($token);
+                if($result==NULL)
+                {
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
+            public function checkTokenforEmailExists($email){
+                $result=$this->dal->checkTokenForEmail($email);
+                if($result==NULL)
+                {
+                    return false;
+                }else{
+                    return true;
+                }
+            }
             
 
             public function logout() {

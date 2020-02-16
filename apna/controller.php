@@ -96,6 +96,36 @@
             echo($e);
         }
     }
+
+    if(isset($_POST["restpass-button"])){
+        try{
+            $email=$_POST['resetpass-email'];
+            $Check=$loginService->CheckUser($_POST['resetpass-email']);
+            if($Check == true){
+                //checks if the token already exists for the given email
+                if($loginService->checkTokenforEmailExists($email) == false){
+                    $token = uniqid("", true);
+                    //checks if the same value of token exists for an email
+                    if($loginService->CheckifSameTokenExists($token) == false){
+                        $token = uniqid("", true);
+                    }
+                    $loginService->storeToken($email,$token);
+                    $message = "Hello! Here is the link for you to reset your password http://622022.infhaarlem.nl/resetpass.php?token=$token\n" 
+                    . "Follow the link to change your password.";
+
+                    mail($email, "Password reset request", $message);
+                    echo("A reset link was sent to $email");
+                }else{
+                    echo("The token for this email already exists!");
+                }
+                
+            }else{
+                echo("This email does not exist.You can register for this email");
+            }
+        }catch(Exception $e) {
+            echo($e);
+        }
+    }
     
 
 ?>

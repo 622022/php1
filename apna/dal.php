@@ -184,6 +184,29 @@
             return $this->executeEditQuery($query, 'ss', $newName,$userEmail) == 1;
 
         }
+        
+        public function checkSameToken($token){
+            $query = "
+            SELECT token
+            FROM users
+            WHERE
+            token = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $token)[0]["token"];
+        }
+
+        public function checkTokenForEmail($email){
+            $query = "
+            SELECT token
+            FROM users
+            WHERE
+            email = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $email)[0]["token"];
+        }
+
 
     }
    

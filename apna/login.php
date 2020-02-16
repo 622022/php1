@@ -14,5 +14,13 @@
                 <input name="login-button" type="submit" value="Login" />
             </form>
             <p>Not registered yet? <a href='registration.php'>Register Here</a></p>
+            <p>Forgot Password? <a href='resetpass.php'>Click here.</a></p>
+        </div>
+        <!-- <script>
+            function onButtonClick(){
+                document.getElementById('resetpass-email').className="show";
+            }
+        </script> -->
+        
     </body>
 </html>
