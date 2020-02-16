@@ -28,9 +28,20 @@
             <button type="submit" name="search-button"> Search user</button>  
         </form>
 
-        <form action="controller.php" method="post">
-            <button type="submit" name="logout-btn">Logout</button>
+        <form action="javascript:void(0);" method="post" name="logout-form" Id="logout-form">
+            <button type="submit" name="logout-btn" onclick="Confirm()">Logout </button>
         </form>
+
+        <script>
+        function Confirm() {
+            var r = confirm("You will be logged out. \n Are you sure?");
+            if (r == true) {
+                document.getElementById("logout-form").action = "controller.php";
+            } else {
+                header("Location: dashboard.php");
+            }
+        }
+        </script>
         
     </body>
 </html>

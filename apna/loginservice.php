@@ -58,6 +58,15 @@
                 }
             }
 
+            
+            public function checkSession(){
+                if (session_status() == PHP_SESSION_ACTIVE) {
+                    return isset($_SESSION['USER']) ? $_SESSION['USER'] : null;
+                } else {
+                 return false;
+                }
+            }
+
             public function captcha()
             {
                 if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
@@ -86,7 +95,7 @@
             public function logout() {
                 session_destroy();
                 session_unset();
-                header("login.php");
+                //header("login.php");
             }
 
         }
