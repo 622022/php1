@@ -124,7 +124,7 @@ input[type='submit'] {
 .box-container h3{
     position: relative;
 }
-.box-container #addbtn{
+.box-container #buybtn{
     background-color: blue;
     position: absolute;
     width: 116px;
