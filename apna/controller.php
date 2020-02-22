@@ -15,7 +15,7 @@
             }
             else
             {
-                echo("Invalid login. <a href=\"login.php\">click here to return and retry</a>");
+                echo'<h2>Invalid login Please check your email and/or password.</h2> <a href="login.php">click here to return and retry</a>';
 
             }
             

@@ -6,16 +6,30 @@
         <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
-        <div class="form">
+        <div id="loginForm" class="form" onsubmit="return validateForm()">
             <h1>Log In</h1>
-            <form action="controller.php" method="post">
-                <input type="text" name="login-email" placeholder="email" required />
+            <form id="loginForm" action="controller.php" method="post" onsubmit="return validateForm()">
+                <input id="log-email" type="text" name="login-email" placeholder="email" required />
                 <input type="password" name="login-password" placeholder="password" required />
-                <input name="login-button" type="submit" value="Login" />
+                <input name="login-button" type="submit" value="Login" onclick="validateForm()"/>
             </form>
             <p>Not registered yet? <a href='registration.php'>Register Here</a></p>
             <p>Forgot Password? <a href='requestpass.php'>Click here.</a></p>
         </div>
+
+        <script>
+            function validateForm()
+            {
+                var email = $("#log-email").val();
+                if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email)) || email=="" || email==null) { } else {
+                alert("Please enter a valid email");
+                return false;
+                }
+                document.getElementById("loginForm").submit();
+                return true;
+
+            }
+        </script>
         
     </body>
 </html>

@@ -29,7 +29,7 @@
                     $_SESSION['EMAIL'] = $email;
                     return true;
                 } else {
-                    echo("bad login");
+                    //echo("bad login");
                     return false;
                 }
             }
