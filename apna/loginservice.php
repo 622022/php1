@@ -141,5 +141,11 @@
                 return $email;
             }
 
+            public function returnURL($email)
+            {
+                $URL=$this->dal->getURL($email);
+                return $URL;
+            }
+
         }
 ?>

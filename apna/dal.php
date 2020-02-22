@@ -219,6 +219,16 @@
             return $this->executeEditQuery($query, 'ss', $token,$email) == 1;
         }
 
+        public function getURL($email){
+            $query = "
+                SELECT image_URL
+                FROM users
+                WHERE email = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $email)[0]["image_URL"];
+        }
+
 
     }
    
