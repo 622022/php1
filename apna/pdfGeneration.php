@@ -5,6 +5,7 @@ $loginService = loginService::getInstance();
 $username=$loginService->returnUsername();
 $email=$loginService->returnEmail();
 $currentDate=date("Y-m-d");
+$imagenurl = "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg";
 ob_start();
 //require('fdpdf/fpdf.php');
 require('fdpdf/code39.php');
@@ -43,6 +44,7 @@ $pdf->Ln(5);//Line break
 $pdf->Cell(140, 5, '', 0, 0);
 $pdf->Cell(50, 5, ': Signature', 0, 1, 'C');
 $pdf->Code39(80,100,"$username 123",1,10);
+$pdf->Cell(0, 0, $pdf->Image($imagenurl, 1,1,20,10), 0, 0, 'C', false,'');
 $pdf->Output();
 ob_end_flush(); 
 ?>
