@@ -44,36 +44,16 @@ if ($action == 'multiple') {
           // It could be something like $handle->process('/home/www/my_uploads/');
           $handle->process($dir_dest);
 
-            $handle->image_resize            = true;
-            $handle->image_ratio_y           = true;
-            $handle->image_x                 = 300;
+          $handle->image_resize            = true;
+          $handle->image_ratio_y           = true;
+          $handle->image_x                 = 300;
+          $handle->image_reflection_height = '25%';
+          $handle->image_contrast          = 50;
+
+          $handle->process($dir_dest);
+  
 
           // we check if everything went OK
-          if ($handle->processed) {
-              // everything was fine !
-              echo '<p class="result">';
-              echo '  <b>File uploaded with success</b><br />';
-              echo '  File: <a href="'.$dir_pics.'/' . $handle->file_dst_name . '">' . $handle->file_dst_name . '</a>';
-              echo '   (' . round(filesize($handle->file_dst_pathname)/256)/4 . 'KB)';
-              echo '</p>';
-          } else {
-              // one error occured
-              echo '<p class="result">';
-              echo '  <b>File not uploaded to the wanted location</b><br />';
-              echo '  Error: ' . $handle->error . '';
-              echo '</p>';
-          }
-
-          // we now process the image a second time, with some other settings
-        $handle->image_resize            = true;
-        $handle->image_ratio_y           = true;
-        $handle->image_x                 = 300;
-        $handle->image_reflection_height = '25%';
-        $handle->image_contrast          = 50;
-
-        $handle->process($dir_dest);
-
-        // we check if everything went OK
         if ($handle->processed) {
             // everything was fine !
             echo '<p class="result">';
@@ -90,11 +70,10 @@ if ($action == 'multiple') {
             echo '  Error: ' . $handle->error . '';
             echo '</p>';
         }
-
         // we delete the temporary files
         $handle-> clean();
 
-
+        
       } else {
           // if we're here, the upload file failed for some reasons
           // i.e. the server didn't receive the file
