@@ -21,6 +21,7 @@ if ($loginService->checkSession())
                 <a href="ticketpage.php">Ticket Purchase</a>
                 <a href="changeinfo.php">Update info</a>
                 <a href="uploadpage.html">Image Upload</a>
+                <a href="pdfGeneration.php">PDF generate</a>
                 </div>
         </header>
         <?php

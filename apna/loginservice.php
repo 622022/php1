@@ -127,5 +127,19 @@
                 //header("login.php");
             }
 
+            public function returnUsername()
+            {
+                $username= $_SESSION['USER'];
+                
+
+                return($username);
+            }
+
+            public function returnEmail()
+            {
+                $email= $_SESSION['EMAIL'];
+                return $email;
+            }
+
         }
 ?>
