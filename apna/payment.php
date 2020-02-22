@@ -23,7 +23,7 @@
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '60.00'
+            value: '0.01'
           }
         }]
       });
@@ -32,7 +32,7 @@
       return actions.order.capture().then(function(details) {
         alert('Transaction completed by ' + details.payer.name.given_name);
         // Call your server to save the transaction
-        return fetch('/paypal-transaction-complete', {
+        return fetch('getOrder.php', {
           method: 'post',
           headers: {
             'content-type': 'application/json'

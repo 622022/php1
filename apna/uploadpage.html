@@ -1,0 +1,10 @@
+<fieldset>
+    <legend>Multiple upload flexible</legend>
+    <p>Pick up some files to upload, and press "upload" </p>
+    <form name="form4" enctype="multipart/form-data" method="post" action="upload.php">
+        <p><input type="file" name="my_field[]" value="" multiple="multiple"/></p>
+        <p class="button"><input type="hidden" name="action" value="multiple" />
+        <input type="submit" name="Submit" value="upload" /></p>
+    </form>
+    <p>Note: Number of processed files per request on the server is also limited by PHP ini setting <strong>max_file_uploads</strong>.</p>
+</fieldset>
