@@ -1,5 +1,27 @@
 <?php
 namespace Verot\Upload;
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        <header>
+            <div class="topnav">
+                <a class="active" href="dashboard.php">Home</a>
+                <a href="ticketpage.php">Ticket Purchase</a>
+                <a href="changeinfo.php">Update info</a>
+                <a href="uploadpage.html">Image Upload</a>
+                </div>
+        </header>
+    </body>
+</html>
+
+<?php
+//namespace Verot\Upload;
 
 error_reporting(E_ALL);
 
@@ -57,7 +79,7 @@ if ($action == 'multiple') {
         if ($handle->processed) {
             // everything was fine !
             echo '<p class="result">';
-            echo '  <b>File uploaded with success</b><br />';
+            echo '  <b>File uploaded and processed with success!</b><br />';
             echo '  <img src="'.$dir_pics.'/' . $handle->file_dst_name . '" />';
             $info = getimagesize($handle->file_dst_pathname);
             echo '  File: <a href="'.$dir_pics.'/' . $handle->file_dst_name . '">' . $handle->file_dst_name . '</a><br/>';

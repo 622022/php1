@@ -1,10 +1,28 @@
-<fieldset>
-    <legend>Multiple upload flexible</legend>
-    <p>Pick up some files to upload, and press "upload" </p>
-    <form name="form4" enctype="multipart/form-data" method="post" action="upload.php">
-        <p><input type="file" name="my_field[]" value="" multiple="multiple"/></p>
-        <p class="button"><input type="hidden" name="action" value="multiple" />
-        <input type="submit" name="Submit" value="upload" /></p>
-    </form>
-    <p>Note: Number of processed files per request on the server is also limited by PHP ini setting <strong>max_file_uploads</strong>.</p>
-</fieldset>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        <header>
+            <div class="topnav">
+                <a class="active" href="dashboard.php">Home</a>
+                <a href="ticketpage.php">Ticket Purchase</a>
+                <a href="changeinfo.php">Update info</a>
+                <a href="uploadpage.html">Image Upload</a>
+                </div>
+        </header>
+        <fieldset>
+            <legend>Multiple upload flexible</legend>
+            <p>Pick up some files to upload, and press "upload" </p>
+            <form name="form4" enctype="multipart/form-data" method="post" action="upload.php">
+                <p><input type="file" name="my_field[]" value="" multiple="multiple"/></p>
+                <p class="button"><input type="hidden" name="action" value="multiple" />
+                <input type="submit" name="Submit" value="upload" /></p>
+            </form>
+            <p>Note: The uploaded and processed files/images are stored in /tmp folder</p>
+        </fieldset>
+    </body>
+</html>

@@ -16,8 +16,9 @@ if ($loginService->checkSession())
         <header>
             <div class="topnav">
                 <a class="active" href="dashboard.php">Home</a>
-                <a href="ticketpage.php">PHP2</a>
+                <a href="ticketpage.php">Ticket Purchase</a>
                 <a href="changeinfo.php">Update info</a>
+                <a href="uploadpage.html">Image Upload</a>
                 </div>
         </header>
         <?php
