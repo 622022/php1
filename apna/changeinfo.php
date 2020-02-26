@@ -12,17 +12,23 @@ if ($loginService->checkSession())
         <meta charset="utf-8">
         <title>Dashboard</title>
         <link rel="stylesheet" href="css/main.css" />
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
         <header>
-            <div class="topnav">
-                <a class="active" href="dashboard.php">Home</a>
-                <a href="ticketpage.php">Ticket Purchase</a>
-                <a href="changeinfo.php">Update info</a>
-                <a href="uploadpage.html">Image Upload</a>
-                </div>
+            <!--Navigation bar-->
+            <div id="nav-placeholder">
+
+            </div>
+
+            <script>
+            $(function(){
+            $("#nav-placeholder").load("nav.html");
+            });
+            </script>
+            <!--end of Navigation bar-->
         </header>
         <form name="changeinfo-form" action="controller.php" method="post">
                 <input type="text" name="change-name" placeholder="Your New Name"/>

@@ -1,3 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    </head>
+    <body>
+    <header>
+            <!--Navigation bar-->
+            <div id="nav-placeholder">
+
+            </div>
+
+            <script>
+            $(function(){
+            $("#nav-placeholder").load("nav.html");
+            });
+            </script>
+            <!--end of Navigation bar-->
+        </header>
+        </header>
 <form id="frm-upload" action="" method="post"
     enctype="multipart/form-data">
     <div class="form-row">

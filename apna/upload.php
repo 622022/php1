@@ -10,12 +10,17 @@ namespace Verot\Upload;
     </head>
     <body>
         <header>
-            <div class="topnav">
-                <a class="active" href="dashboard.php">Home</a>
-                <a href="ticketpage.php">Ticket Purchase</a>
-                <a href="changeinfo.php">Update info</a>
-                <a href="uploadpage.html">Image Upload</a>
-                </div>
+            <!--Navigation bar-->
+            <div id="nav-placeholder">
+
+            </div>
+
+            <script>
+            $(function(){
+            $("#nav-placeholder").load("nav.html");
+            });
+            </script>
+            <!--end of Navigation bar-->
         </header>
     </body>
 </html>

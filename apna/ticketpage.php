@@ -6,16 +6,22 @@
         <meta charset="utf-8">
         <title>Dashboard</title>
         <link href="css/main.css" rel="stylesheet" type="text/css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
 
         <header>
-            <div class="topnav">
-                <a class="active" href="dashboard.php">Home</a>
-                <a href="ticketpage.php">Ticket Purchase</a>
-                <a href="changeinfo.php">Update info</a>
-                <a href="uploadpage.html">Image Upload</a>
+            <!--Navigation bar-->
+            <div id="nav-placeholder">
+
             </div>
+
+            <script>
+            $(function(){
+            $("#nav-placeholder").load("nav.html");
+            });
+            </script>
+            <!--end of Navigation bar-->
         </header>
 
         <section class="eventcard">
