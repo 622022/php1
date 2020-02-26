@@ -130,7 +130,7 @@
     if(isset($_POST["resetpass-button"])){
         try{
             $loginService->setNewPassword($_POST['resetpass'], $_POST['token']);
-            echo("Your password was updated!");
+            echo("Your password was updated! <a href=\"login.php\">Go for login</a>.");
         }catch(Exception $e) {
             echo($e);
         }
