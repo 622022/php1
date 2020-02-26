@@ -219,6 +219,39 @@
             return $this->executeEditQuery($query, 'ss', $token,$email) == 1;
         }
 
+        public function checkifTokenExists($token){
+            $query = "
+            SELECT token
+            FROM users
+            WHERE
+            token = ?
+            ";
+
+            return $this->executeSelectQuery($query, 's', $token)[0]["token"];
+        }
+
+        public function resetPass($pass,$token){
+            $query = "
+            UPDATE users
+            SET password = ?
+            WHERE
+            token = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $pass,$token) == 1;
+        }
+
+        public function dropToken($token){
+            $query = "
+            Update users 
+            SET token = NULL 
+            WHERE 
+            token = ?
+            ";
+
+            return $this->executeEditQuery($query, 's', $token) == 1;
+        }
+
         public function getURL($email){
             $query = "
                 SELECT image_URL

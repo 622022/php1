@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
+//echo ("Welcome ") . $_SESSION['EMAIL'] . "!";
 require_once("loginservice.php");
 $loginService = loginService::getInstance();
 if ($loginService->checkSession())

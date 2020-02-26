@@ -126,6 +126,15 @@
             echo($e);
         }
     }
+
+    if(isset($_POST["resetpass-button"])){
+        try{
+            $loginService->setNewPassword($_POST['resetpass'], $_POST['token']);
+            echo("Your password was updated!");
+        }catch(Exception $e) {
+            echo($e);
+        }
+    }
     
 
 ?>

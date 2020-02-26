@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+  <link rel="stylesheet" href="css/main.css" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 

@@ -119,6 +119,23 @@
             public function storeToken($email,$token){
                 $this->dal->tokenStore($email,$token);
             }
+
+            public function checkToken($token)
+            {
+                $result=$this->dal->checkifTokenExists($token);
+                if($result==NULL)
+                {
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
+            public function setNewPassword($pass,$token)
+            {
+                $this->dal->resetPass(password_hash($pass, PASSWORD_BCRYPT),$token);
+                $this->dal->dropToken($token);
+            }
             
 
             public function logout() {
@@ -146,6 +163,7 @@
                 $URL=$this->dal->getURL($email);
                 return $URL;
             }
+
 
         }
 ?>
