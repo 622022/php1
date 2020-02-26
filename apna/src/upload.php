@@ -116,3 +116,17 @@ if ($action == 'multiple') {
 }
 
 ?>
+        <form action="javascript:void(0);" method="post" name="logout-form" Id="logout-form">
+            <button id="logout-button"type="submit" name="logout-btn" onclick="Confirm()">Logout </button>
+        </form>
+
+        <script>
+        function Confirm() {
+            var r = confirm("You will be logged out. \n Are you sure?");
+            if (r == true) {
+                document.getElementById("logout-form").action = "../controller/controller.php";
+            } else {
+                header("Location: dashboard.php");
+            }
+        }
+        </script>

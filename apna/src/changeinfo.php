@@ -37,11 +37,22 @@ if ($loginService->checkSession())
                 <input id="check" type="submit" name="update-email" value="Update"/>
         </form>
 
-        <div class="fb-page" data-href="https://www.facebook.com/youtube/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/youtube/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youtube/">YouTube</a></blockquote></div>
+        <!-- <div class="fb-page" data-href="https://www.facebook.com/youtube/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/youtube/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youtube/">YouTube</a></blockquote></div> -->
 
-        <form action="../controller/controller.php" method="post">
-            <button type="submit" name="logout-btn">Logout</button>
+        <form action="javascript:void(0);" method="post" name="logout-form" Id="logout-form">
+            <button id="logout-button"type="submit" name="logout-btn" onclick="Confirm()">Logout </button>
         </form>
+
+        <script>
+        function Confirm() {
+            var r = confirm("You will be logged out. \n Are you sure?");
+            if (r == true) {
+                document.getElementById("logout-form").action = "../controller/controller.php";
+            } else {
+                header("Location: dashboard.php");
+            }
+        }
+        </script>
         
     </body>
 </html>

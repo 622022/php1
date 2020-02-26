@@ -139,4 +139,14 @@ input[type='submit'] {
 .fb-page{
     left: 1180px;
 }
+#logout-button{
+    width: 106px;
+    height: 36px;
+    margin-left: 1400px;
+    background-color: coral;
+    position: fixed;
+    top: 0px;
+
+
+}
 
