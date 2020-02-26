@@ -4,8 +4,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Dashboard</title>
-        <link href="css/main.css" rel="stylesheet" type="text/css">
+        <title>Ticket Page</title>
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>

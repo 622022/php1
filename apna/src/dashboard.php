@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("loginservice.php");
+require_once("../service/loginservice.php");
 $loginService = loginService::getInstance();
 if ($loginService->checkSession())
 {
@@ -10,7 +10,7 @@ if ($loginService->checkSession())
     <head>
         <meta charset="utf-8">
         <title>Dashboard</title>
-        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="../css/main.css" />
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     </head>
@@ -54,14 +54,14 @@ if ($loginService->checkSession())
         function Confirm() {
             var r = confirm("You will be logged out. \n Are you sure?");
             if (r == true) {
-                document.getElementById("logout-form").action = "controller.php";
+                document.getElementById("logout-form").action = "../controller/controller.php";
             } else {
                 header("Location: dashboard.php");
             }
         }
         </script>
 <?php } else{
-    Echo("You are not logged in!<a href=\"login.php\">click here to login again</a>.");
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
 } 
 ?>
     </body>

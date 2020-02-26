@@ -5,8 +5,8 @@ namespace Verot\Upload;
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="css/main.css" />
+        <title>Upoad image page</title>
+        <link rel="stylesheet" href="../css/main.css" />
     </head>
     <body>
         <header>
@@ -31,7 +31,7 @@ namespace Verot\Upload;
 error_reporting(E_ALL);
 
 // we first include the upload class, as we will need it here to deal with the uploaded file
-include('./vendor/autoload.php');
+include('../vendor/autoload.php');
 
 // set variables
 $dir_dest = (isset($_GET['dir']) ? $_GET['dir'] : 'tmp');

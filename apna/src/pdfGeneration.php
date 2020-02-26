@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-require_once("loginservice.php");
+require_once("../service/loginservice.php");
 $loginService = loginService::getInstance();
 $username=$loginService->returnUsername();
 $email=$loginService->returnEmail();
@@ -9,12 +9,12 @@ $email=$loginService->returnEmail();
 $imageUrl=$loginService->returnURL($email);
 
 $currentDate=date("Y-m-d");
-require_once ( 'fdpdf/qrcode/qrcode.class.php');
+require_once ( '../fdpdf/qrcode/qrcode.class.php');
 
 $qrcode = new QRcode ("Dance ticket for $username", 'H'); // error level: L, M, Q, H
 ob_start();
 //require('fdpdf/fpdf.php');
-require('fdpdf/code39.php');
+require('../fdpdf/code39.php');
 $pdf = new FPDF();
 $pdf=new PDF_Code39();
 $pdf->AddPage();

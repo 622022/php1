@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once("loginservice.php");
+    require_once("../service/loginservice.php");
     $loginService = loginService::getInstance();
 
     if ($loginService->checkToken($_GET["token"] == true)) {
@@ -10,10 +10,10 @@
     <head>
         <meta charset="utf-8">
         <title>Dashboard</title>
-        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="../css/main.css" />
     </head>
     <body>
-    <form name="changepass-form" action="controller.php" method="post">
+    <form name="changepass-form" action="../controller/controller.php" method="post">
                 <input type="hidden" name="token" value=<?php echo($_GET["token"]); ?>>
                 <input type="password" name="resetpass" required/>
                 <input type="password" name="resetpass-re" required/>

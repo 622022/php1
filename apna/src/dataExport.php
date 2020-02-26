@@ -1,5 +1,5 @@
 <?php
-require_once("dataService.php");
+require_once("../service/dataService.php");
 $dataService = dataService::getInstance();
 $result=$dataService->getData();
 ?>
@@ -7,8 +7,8 @@ $result=$dataService->getData();
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="css/main.css" />
+        <title>Export Page</title>
+        <link rel="stylesheet" href="../css/main.css" />
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>

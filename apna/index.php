@@ -8,13 +8,13 @@
     <body>
         <div id="loginForm" class="form" onsubmit="return validateForm()">
             <h1>Log In</h1>
-            <form id="loginForm" action="controller.php" method="post" onsubmit="return validateForm()">
+            <form id="loginForm" action="controller/controller.php" method="post" onsubmit="return validateForm()">
                 <input id="log-email" type="text" name="login-email" placeholder="email" required />
                 <input type="password" name="login-password" placeholder="password" required />
                 <input name="login-button" type="submit" value="Login" onclick="validateForm()"/>
             </form>
-            <p>Not registered yet? <a href='registration.php'>Register Here</a></p>
-            <p>Forgot Password? <a href='requestpass.php'>Click here.</a></p>
+            <p>Not registered yet? <a href='src/registration.php'>Register Here</a></p>
+            <p>Forgot Password? <a href='src/requestpass.php'>Click here.</a></p>
         </div>
 
         <script>

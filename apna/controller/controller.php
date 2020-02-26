@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require_once("loginservice.php");
-    require_once("searchService.php");
+    require_once("../service/loginservice.php");
+    require_once("../service/searchService.php");
     $loginService = loginService::getInstance();
     $searchService = searchService::getInstance();
 
@@ -11,11 +11,11 @@
         try {
             if($loginService->login($_POST['login-email'], $_POST['login-password']))
             {
-                header("Location: dashboard.php");
+                header("Location: ../src/dashboard.php");
             }
             else
             {
-                echo'<h2>Invalid login Please check your email and/or password.</h2> <a href="login.php">click here to return and retry</a>';
+                echo'<h2>Invalid login Please check your email and/or password.</h2> <a href="../index.php">click here to return and retry</a>';
 
             }
             
@@ -30,10 +30,10 @@
         try {
             if ($_POST['register-password'] == $_POST['register-repassword']) {
                 if($Check==false && $Captcha_chk==true){
-                    echo("This email already exists. <a href=\"login.php\">Please log in.</a> ");
+                    echo("This email already exists. <a href=\"../index.php\">Please log in.</a> ");
                 }else{
                     $loginService->register( $_POST['register-name'], $_POST['register-email'], $_POST['register-password']);
-                    echo("You were succesfully registered. <a href=\"login.php\">click here to return</a>.");
+                    echo("You were succesfully registered. <a href=\"../index.php\">click here to return</a>.");
                 }
                 
             } else {
@@ -56,7 +56,7 @@
                 if ($Check == false) {
                     echo("User with email '$newEmail' already exists.");
                 } else {
-                    echo("Email and name succesfully changed, <a href=\"login.php\">click here to login again</a>.");
+                    echo("Email and name succesfully changed, <a href=\"../index.php\">click here to login again</a>.");
                 }
                 // Change the email
                 $loginService->updateEmail($oldEmail, $newEmail);
@@ -80,7 +80,7 @@
             else{
                 $loginService->updateName($newName,$oldEmail);
                 Echo("Name successfully changed to $newName!");
-                echo("<a href=\"changeinfo.php\">Go back</a>.");
+                echo("<a href=\"../src/changeinfo.php\">Go back</a>.");
             }
         }catch(Exception $e) {
             echo($e);
@@ -91,7 +91,7 @@
     if (isset($_POST["logout-btn"])) {
         try {
             $loginService->logout();
-            header("Location: login.php");
+            header("Location: ../index.php");
         } catch(Exception $e) {
             echo($e);
         }
@@ -130,7 +130,7 @@
     if(isset($_POST["resetpass-button"])){
         try{
             $loginService->setNewPassword($_POST['resetpass'], $_POST['token']);
-            echo("Your password was updated! <a href=\"login.php\">Go for login</a>.");
+            echo("Your password was updated! <a href=\"../index.php\">Go for login</a>.");
         }catch(Exception $e) {
             echo($e);
         }

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("searchService.php");
-require_once("loginservice.php");
+require_once("../service/searchService.php");
+require_once("../service/loginservice.php");
 $searchService = searchService::getInstance();
 $loginService = loginService::getInstance();
 if ($loginService->checkSession())
@@ -12,8 +12,8 @@ if ($loginService->checkSession())
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="css/main.css" />
+        <title>Search Page</title>
+        <link rel="stylesheet" href="../css/main.css" />
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
@@ -72,6 +72,6 @@ if ($loginService->checkSession())
     </body>
 </html>
 <?php } else{
-    Echo("You are not logged in!<a href=\"login.php\">click here to login again</a>.");
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
 } 
 ?>
