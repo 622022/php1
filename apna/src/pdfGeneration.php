@@ -12,6 +12,10 @@ $currentDate=date("Y-m-d");
 require_once ( '../fdpdf/qrcode/qrcode.class.php');
 
 $qrcode = new QRcode ("Dance ticket for $username", 'H'); // error level: L, M, Q, H
+
+if ($loginService->checkSession())
+{
+
 ob_start();
 //require('fdpdf/fpdf.php');
 require('../fdpdf/code39.php');
@@ -56,5 +60,8 @@ $pdf->Cell(0, 0, $pdf->Image($imageUrl, 150,30,50,30), 0, 0, 'C', false,'');
 $qrcode->displayFPDF($pdf, 115, 100, 100);
 $pdf->Output();
 ob_end_flush(); 
+} else{
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
+} 
 ?>
 

@@ -1,5 +1,11 @@
 
-
+<?php
+session_start();
+require_once("../service/loginservice.php");
+$loginService = loginService::getInstance();
+if ($loginService->checkSession())
+{
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,3 +62,7 @@
         </script>
     </body>
 </html>
+<?php } else{
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
+} 
+?>

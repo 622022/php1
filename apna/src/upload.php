@@ -1,6 +1,12 @@
 <?php
 namespace Verot\Upload;
+session_start();
+require_once("../service/loginservice.php");
+$loginService = loginService::getInstance();
+if ($loginService->checkSession())
+{
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -130,3 +136,7 @@ if ($action == 'multiple') {
             }
         }
         </script>
+<?php } else{
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
+} 
+?>

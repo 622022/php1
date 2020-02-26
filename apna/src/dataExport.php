@@ -1,7 +1,13 @@
 <?php
+session_start();
+require_once("../service/loginservice.php");
 require_once("../service/dataService.php");
+$loginService = loginService::getInstance();
 $dataService = dataService::getInstance();
 $result=$dataService->getData();
+if ($loginService->checkSession())
+{
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -123,6 +129,7 @@ if (isset($_POST["XLS-select"])) {
     
     //fclose($file);
 }
-
-
+}else{
+    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
+} 
 ?>
