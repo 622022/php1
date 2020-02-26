@@ -51,7 +51,7 @@ $result=$dataService->getData();
         <br>
         <br>
         <h1>How do you want to export your file?</h1>
-        <form action="csvexport.php" method="post">
+        <form action="dataExport.php" method="post">
             <input type="submit" name="CSV-select" value="select CSV">
             <br>
             <input type="submit" name="XLS-select" value="select XLS">

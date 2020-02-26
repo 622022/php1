@@ -32,8 +32,8 @@
     </div>
 
     <div class="button-row">
-        <input type="submit" id="btn-submit" name="upload"
-            value="Upload">
+        <input type="submit" id="btn-submit" name="upload-CSV"
+            value="upload-CSV">
     </div>
 </form>
 <?php if(!empty($response)) { ?>
@@ -45,7 +45,7 @@
 
 
 <?php
-if(!empty(isset($_POST["upload"]))) {
+if(!empty(isset($_POST["upload-CSV"]))) {
     if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
     ?>
 <table class="csvtohtmltable" width="100%" border="1" cellspacing="0">
