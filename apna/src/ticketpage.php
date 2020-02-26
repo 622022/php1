@@ -29,7 +29,7 @@ if ($loginService->checkSession())
             </script>
             <!--end of Navigation bar-->
         </header>
-            //showing event here
+            <!-- //showing event here -->
         <section class="eventcard">
 		  <div class="box-container">
 		  <img src="https://www.funx.nl/images/2017/12/19_ae_Nicky-Romero-press-photo-cr-Marte-Visser-2017-billboard-1548.jpg" alt="some description">

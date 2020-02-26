@@ -1,4 +1,4 @@
-//check before every page to see if user is logged in before accessing it.
+<!-- //check before every page to see if user is logged in before accessing it. -->
 
 <?php
 session_start();
