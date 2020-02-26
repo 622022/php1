@@ -51,12 +51,6 @@ if ($loginService->checkSession())
 <?php }?>
 
 
-<<<<<<< HEAD
-    <?php
-    //checks and then uses the file uploaded and then converts it into html.
-    if(!empty(isset($_POST["upload-CSV"]))) {
-        if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
-=======
 <?php
 if(!empty(isset($_POST["upload-CSV"]))) {
     if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
@@ -69,7 +63,6 @@ if(!empty(isset($_POST["upload-CSV"]))) {
         if($i==0) {
            $class = "header";
         }
->>>>>>> parent of 779083f... code cleanup and made more readable
         ?>
     <tr>
             <td class="<?php echo $class; ?>"><?php echo $row[0]; ?></td>

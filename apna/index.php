@@ -8,7 +8,7 @@
 
     </head>
     <body>
-        //login form which submits data to controller for login and calls validate form method to validate email using Javascript
+        <!-- //login form which submits data to controller for login and calls validate form method to validate email using Javascript -->
         <div id="loginForm" class="form" onsubmit="return validateForm()">
             <h1>Log In</h1>
             <form id="loginForm" action="controller/controller.php" method="post" onsubmit="return validateForm()">
@@ -21,7 +21,7 @@
         </div>
 
         <script>
-        //the method to validate email
+        // //the method to validate email
             function validateForm()
             {
                 var email = $("#log-email").val();

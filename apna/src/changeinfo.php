@@ -1,4 +1,4 @@
-//check before every page to see if user is logged in before accessing it.
+<!-- //check before every page to see if user is logged in before accessing it. -->
 <?php
 session_start();
 require_once("../service/loginservice.php");
@@ -15,7 +15,7 @@ if ($loginService->checkSession())
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
-        //navbar file being called using javascript on every page.
+        <!-- //navbar file being called using javascript on every page. -->
             <!--Navigation bar-->
             <div id="nav-placeholder">
 
