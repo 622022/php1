@@ -229,6 +229,17 @@
             return $this->executeSelectQuery($query, 's', $email)[0]["image_URL"];
         }
 
+        public function getDataforExport()
+        {
+            
+            $query=$this->conn->prepare("SELECT id,name,email FROM `users`");
+            $query->execute();
+            $result = $query->get_result();
+            return $result;
+            
+            
+        }
+
 
     }
    
