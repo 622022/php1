@@ -52,6 +52,7 @@ if ($loginService->checkSession())
 
 
     <?php
+    //checks and then uses the file uploaded and then converts it into html.
     if(!empty(isset($_POST["upload-CSV"]))) {
         if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
         ?>

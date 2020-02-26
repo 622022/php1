@@ -1,3 +1,5 @@
+//check before every page to see if user is logged in before accessing it.
+
 <?php
 session_start();
 require_once("../service/loginservice.php");
@@ -15,9 +17,11 @@ if ($loginService->checkSession())
 
     </head>
     <body>
+        //External api of Facebook being used to display a page.
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
         <header>
+            //navbar file being called using javascript on every page.
             <!--Navigation bar-->
             <div id="nav-placeholder">
 

@@ -39,21 +39,9 @@ if ($loginService->checkSession())
         </tr>
             <?php
                 $name=$_POST["search-name"];
-                //$query1=$_POST["search-email"];
-                //$query2=$_POST["search-date"];
-                //$searcharray = $searchService->searchUsers($query,$query1,$query2);
+            
                 $searcharray = $searchService->searchUsers($name);
 
-                // $keys=array();
-
-        
-                // $keys = array_search($query, array_column($searcharray, 'name'));
-                // $keys = array_search($query1, array_column($searcharray, 'email'));
-                // $keys = array_search($query2, array_column($searcharray, 'registration'));
-                    //print_r ($searcharray[$key]['name']);
-
-
-                
                 for($x=0; $x < sizeof($searcharray);$x++)
                 {
                     echo"<tr>";

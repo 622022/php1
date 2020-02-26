@@ -3,6 +3,7 @@
     require_once("../service/loginservice.php");
     $loginService = loginService::getInstance();
 
+    //getting token from URL and then getting the new password using the form
     if ($loginService->checkToken($_GET["token"] == true)) {
 ?>
 <!DOCTYPE html>

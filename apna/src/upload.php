@@ -11,7 +11,7 @@ if ($loginService->checkSession())
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Upoad image page</title>
+        <title>Upload image page</title>
         <link rel="stylesheet" href="../css/main.css" />
     </head>
     <body>
@@ -50,7 +50,6 @@ $action = (isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) 
 
 if ($action == 'multiple') {
 
-  // ---------- MULTIPLE UPLOADS ----------
 
   // as it is multiple uploads, we will parse the $_FILES array to reorganize it into $files
   $files = array();
@@ -74,7 +73,7 @@ if ($action == 'multiple') {
 
           // now, we start the upload 'process'. That is, to copy the uploaded file
           // from its temporary location to the wanted location
-          // It could be something like $handle->process('/home/www/my_uploads/');
+          //NOTE: both the uploaded file and the edited version will be in the /tmp folder
           $handle->process($dir_dest);
 
           $handle->image_resize            = true;

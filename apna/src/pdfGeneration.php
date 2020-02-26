@@ -56,7 +56,9 @@ $pdf->Cell(50, 5, ': Signature', 0, 1, 'C');
 
 //barcode generation
 $pdf->Code39(20,100,"$username 123",1,10);
+//Personalized generation
 $pdf->Cell(0, 0, $pdf->Image($imageUrl, 150,30,50,30), 0, 0, 'C', false,'');
+//qr code generation
 $qrcode->displayFPDF($pdf, 115, 100, 100);
 $pdf->Output();
 ob_end_flush(); 

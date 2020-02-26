@@ -1,3 +1,4 @@
+//using Paypal api to implement the payment system.
 <?php
 session_start();
 require_once("../service/loginservice.php");
@@ -32,6 +33,7 @@ if ($loginService->checkSession())
      src="https://www.paypal.com/sdk/js?client-id=Aa1yazhfix0fBSu1O9XW71YjK9xDgow8wkuz1XaPVI9OxKnxhrk4J8wsI5rA24z7VVSviEFf7WvzkR1q&currency=EUR"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
     </script>
 
+    //paypal buttons being dsiplayed here.
     <div id="paypal-button-container"></div>
 
     <script>
@@ -39,6 +41,7 @@ if ($loginService->checkSession())
   // This function displays Smart Payment Buttons on your web page.
     </script>
 
+    
     <script>
       paypal.Buttons({
         createOrder: function(data, actions) {

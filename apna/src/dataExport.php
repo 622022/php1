@@ -39,7 +39,7 @@ if ($loginService->checkSession())
         <th>User email</th>
         </tr>
             <?php
-                
+                //displaying the data to write to csv/excel file.
                 foreach($result as $row)
                 {
                     echo"<tr>";

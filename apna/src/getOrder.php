@@ -7,6 +7,8 @@ require __DIR__ . '../vendor/autoload.php';
 use Sample\PayPalClient;
 use PayPalCheckoutSdk\Orders\OrdersGetRequest;
 
+//this file is used to get OrderID from the payment system employed.
+
 class GetOrder
 {
 

@@ -4,8 +4,11 @@
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" href="css/main.css" />
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
     </head>
     <body>
+        //login form which submits data to controller for login and calls validate form method to validate email using Javascript
         <div id="loginForm" class="form" onsubmit="return validateForm()">
             <h1>Log In</h1>
             <form id="loginForm" action="controller/controller.php" method="post" onsubmit="return validateForm()">
@@ -18,6 +21,7 @@
         </div>
 
         <script>
+        //the method to validate email
             function validateForm()
             {
                 var email = $("#log-email").val();
