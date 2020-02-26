@@ -29,72 +29,78 @@ if ($loginService->checkSession())
             <!--end of Navigation bar-->
         </header>
         </header>
-    <form id="frm-upload" action="" method="post"
-        enctype="multipart/form-data">
-        <div class="form-row">
+<form id="frm-upload" action="" method="post"
+    enctype="multipart/form-data">
+    <div class="form-row">
         <div>Choose file:</div>
         <div>
             <input type="file" class="file-input" name="file-input">
         </div>
-        </div>
-
-        <div class="button-row">
-            <input type="submit" id="btn-submit" name="upload-CSV"
-                value="upload-CSV">
-        </div>
-    </form>
-    <?php if(!empty($response)) { ?>
-    <div class="response <?php echo $response["type"]; ?>
-        ">
-        <?php echo $response["message"]; ?>
     </div>
-    <?php }?>
+
+    <div class="button-row">
+        <input type="submit" id="btn-submit" name="upload-CSV"
+            value="upload-CSV">
+    </div>
+</form>
+<?php if(!empty($response)) { ?>
+<div class="response <?php echo $response["type"]; ?>
+    ">
+    <?php echo $response["message"]; ?>
+</div>
+<?php }?>
 
 
+<<<<<<< HEAD
     <?php
     //checks and then uses the file uploaded and then converts it into html.
     if(!empty(isset($_POST["upload-CSV"]))) {
         if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
+=======
+<?php
+if(!empty(isset($_POST["upload-CSV"]))) {
+    if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {
+    ?>
+<table class="csvtohtmltable" width="100%" border="1" cellspacing="0">
+<?php
+    $i = 0;
+    while (($row = fgetcsv($fp)) !== false) {
+        $class ="";
+        if($i==0) {
+           $class = "header";
+        }
+>>>>>>> parent of 779083f... code cleanup and made more readable
         ?>
-    <table class="csvtohtmltable" width="100%" border="1" cellspacing="0">
-    <?php
-        $i = 0;
-        while (($row = fgetcsv($fp)) !== false) {
-            $class ="";
-            if($i==0) {
-             $class = "header";
-            }
-            ?>
-        <tr>
+    <tr>
             <td class="<?php echo $class; ?>"><?php echo $row[0]; ?></td>
             <td class="<?php echo $class; ?>"><?php echo $row[1]; ?></td>
             <td class="<?php echo $class; ?>"><?php echo $row[2]; ?></td>
         </tr>
     <?php
         $i ++;
-        }
-        fclose($fp);
+    }
+    fclose($fp);
     ?>
     </table>
-    <?php
+<?php
     $response = array("type" => "success", "message" => "CSV is converted to HTML successfully");
     } else {
         $response = array("type" => "error", "message" => "Unable to process CSV");
     }
-    }
-    ?>
-    </div>
-    <?php if(!empty($response)) { ?>
-    <div class="response <?php echo $response["type"]; ?>
-        ">
-        <?php echo $response["message"]; ?>
-    </div>
-    <?php } ?>
-    <form action="javascript:void(0);" method="post" name="logout-form" Id="logout-form">
+}
+?>
+</div>
+<?php if(!empty($response)) { ?>
+<div class="response <?php echo $response["type"]; ?>
+    ">
+    <?php echo $response["message"]; ?>
+</div>
+<?php } ?>
+<form action="javascript:void(0);" method="post" name="logout-form" Id="logout-form">
             <button id="logout-button"type="submit" name="logout-btn" onclick="Confirm()">Logout </button>
-    </form>
+        </form>
 
-    <script>
+        <script>
         function Confirm() {
             var r = confirm("You will be logged out. \n Are you sure?");
             if (r == true) {
