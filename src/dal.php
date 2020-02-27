@@ -1,6 +1,6 @@
 <?php
     require_once("credentials.php");
-    require_once("../model/usermodel.php");
+    require_once(__DIR__ . "/../model/usermodel.php");
 
 
     class dataLayer{

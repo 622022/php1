@@ -1,7 +1,7 @@
 <script src='https://www.google.com/recaptcha/api.js' async defer ></script>
 <?php
-    require_once("../src/dal.php");
-    require_once("../model/usermodel.php");
+    require_once(__DIR__ . "/../src/dal.php");
+    require_once(__DIR__ . "/../model/usermodel.php");
     //session_start();
 
 

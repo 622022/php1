@@ -1,5 +1,5 @@
 <?php
-    require_once("../src/dal.php");
+    require_once(__DIR__ . "/../src/dal.php");
     //session_start();
 
     class searchService{
