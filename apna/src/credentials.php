@@ -1,8 +1,8 @@
 <?php
-define('DB_HOST', '622022.infhaarlem.nl');
-define('DB_USER', 's622022_user');
-define('DB_PASS', 'Phppassword101');
-define('DB_DB', 's622022_db');
+define('DB_HOST', 'vlvlnl1grfzh34vj.chr7pe7iynqr.eu-west-1.rds.amazonaws.com');
+define('DB_USER', 'uluyb2gfzzb66f8y');
+define('DB_PASS', 'y2rwwwvhvynrimjb');
+define('DB_DB', 'fjvme7pj0jur9p39');
 
 
 ?>
