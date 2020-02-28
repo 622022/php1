@@ -1,12 +1,10 @@
 <?php
 namespace Verot\Upload;
 session_start();
-require_once("../service/loginservice.php");
-$loginService = loginService::getInstance();
-if ($loginService->checkSession())
-{
-?>
+include('../vendor/autoload.php');
 
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -81,6 +79,7 @@ if ($action == 'multiple') {
           $handle->image_x                 = 300;
           $handle->image_reflection_height = '25%';
           $handle->image_contrast          = 50;
+          $handle->image_rotate          = '90';
 
           $handle->process($dir_dest);
   
@@ -135,7 +134,4 @@ if ($action == 'multiple') {
             }
         }
         </script>
-<?php } else{
-    Echo("You are not logged in!<a href=\"../index.php\">click here to login again</a>.");
-} 
-?>
+

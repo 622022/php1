@@ -15,7 +15,7 @@ if ($loginService->checkSession())
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
-        <!-- //navbar file being called using javascript on every page. -->
+        <!-- //navbar.html file being called using javascript on every page. -->
             <!--Navigation bar-->
             <div id="nav-placeholder">
 

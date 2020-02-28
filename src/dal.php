@@ -6,11 +6,15 @@
     class dataLayer{
         private static $instance;
         private $conn;
+
+        // constructor to start connection with the database
         
         public function __construct(){
             $this->conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_DB);
         }
 
+
+        // calls the instance if not already started else it creates a new instance
         public static function getInstance() {
             return !self::$instance ? new dataLayer() : self::$instance;
         }
@@ -99,10 +103,7 @@
 
         public function getSearchUsers($searchname)
         {
-            //$param = "%$searchname%";
-            //$param1 = "%$searchemail%";
-            //$param2 = "%$searchdate%";
-            //$query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM `users` WHERE name LIKE ? ");
+            
             $query = $this->conn->prepare("SELECT `name` , email, registration_date FROM `users` WHERE name LIKE ? ");
             $query->bind_param('s' , $searchname);
             $query->execute();
@@ -129,7 +130,6 @@
         public function getAllUsers()
         {
             $query = $this->conn->prepare("SELECT `name`, `email`, `registration_date` FROM users");
-            //$query->bind_param('s' , $email);
             $query->execute();
             $result = $query->get_result();
 
@@ -271,6 +271,17 @@
             return $result;
             
             
+        }
+
+        public function tokenStoreAgain($email,$token){
+            $query = "
+            Update users 
+            SET token = ? 
+            WHERE 
+            email = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $token,$email) == 1;
         }
 
 

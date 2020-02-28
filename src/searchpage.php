@@ -38,6 +38,7 @@ if ($loginService->checkSession())
         <th>Registration date</th>
         </tr>
             <?php
+                // reading the searchitem and calling search service to locate it and then display it
                 $name=$_POST["search-name"];
             
                 $searcharray = $searchService->searchUsers($name);

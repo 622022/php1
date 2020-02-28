@@ -38,7 +38,7 @@ if ($loginService->checkSession())
 
     <script>
   //   //paypal.Buttons().render('#paypal-button-container');
-  // // This function displays Smart Payment Buttons on your web page.
+  // // This function displays Smart Payment Buttons on web page.
     </script>
 
 <script>
@@ -55,7 +55,7 @@ if ($loginService->checkSession())
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
         alert('Transaction completed by ' + details.payer.name.given_name);
-        // Call your server to save the transaction
+        // Calling server to save the transaction
         return fetch('getOrder.php', {
           method: 'post',
           headers: {

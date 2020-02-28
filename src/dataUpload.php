@@ -29,6 +29,8 @@ if ($loginService->checkSession())
             <!--end of Navigation bar-->
         </header>
         </header>
+
+        <!-- //form to get the uploaded images -->
 <form id="frm-upload" action="" method="post"
     enctype="multipart/form-data">
     <div class="form-row">
@@ -43,6 +45,7 @@ if ($loginService->checkSession())
             value="upload-CSV">
     </div>
 </form>
+<!-- display error if nothing uploaded -->
 <?php if(!empty($response)) { ?>
 <div class="response <?php echo $response["type"]; ?>
     ">
@@ -50,7 +53,7 @@ if ($loginService->checkSession())
 </div>
 <?php }?>
 
-
+<!-- reading the uploaded file using fopen and converting the data to HTML -->
 <?php
 if(!empty(isset($_POST["upload-CSV"]))) {
     if (($fp = fopen($_FILES["file-input"]["tmp_name"], "r")) !== FALSE) {

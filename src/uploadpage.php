@@ -30,7 +30,7 @@ if ($loginService->checkSession())
         </header>
         <fieldset>
             <legend>Multiple upload flexible</legend>
-            <p>Pick up some files to upload, and press "upload" </p>
+            <h1>Pick up some files to upload, and press "upload" </h1>
             <form name="form4" enctype="multipart/form-data" method="post" action="upload.php">
                 <p><input type="file" name="my_field[]" value="" multiple="multiple"/></p>
                 <p class="button"><input type="hidden" name="action" value="multiple" />

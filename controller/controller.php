@@ -6,9 +6,10 @@
     $searchService = searchService::getInstance();
 
     
-
+    // checks if the button is clicked and then calls the respective services to initiate tasks
     if (isset($_POST["login-button"])) {
         try {
+            // if logged in takes the user to dashboard
             if($loginService->login($_POST['login-email'], $_POST['login-password']))
             {
                 header("Location: ../src/dashboard.php");
@@ -25,7 +26,9 @@
 
     } 
     if (isset($_POST["register-button"])) {
+        // check to see if the user with the same email exists already
         $Check=$loginService->CheckUser($_POST['register-email']);
+        // check to see if the recaptcha is done
         $Captcha_chk = $loginService->captcha();
         try {
             if ($_POST['register-password'] == $_POST['register-repassword']) {
@@ -46,6 +49,8 @@
 
     if(isset($_POST["update-email"])){
         $Check=$loginService->CheckUser($_POST['new-email']);
+
+        // //getting the old email thorugh the session
         $oldEmail=$_SESSION['EMAIL'];
         $newEmail=$_POST['new-email'];
         
@@ -106,17 +111,18 @@
                 if($loginService->checkTokenforEmailExists($email) == false){
                     $token = uniqid("", true);
                     //checks if the same value of token exists for an email
-                    if($loginService->CheckifSameTokenExists($token) == false){
-                        $token = uniqid("", true);
-                    }
+                    
                     $loginService->storeToken($email,$token);
-                    $message = "Hello! Here is the link for you to reset your password http://622022.infhaarlem.nl/resetpass.php?token=$token\n" 
+                    $message = "Hello! Here is the link for you to reset your password https://my-project-php-2.herokuapp.com/src/requestpass.php?token=$token\n" 
                     . "Follow the link to change your password.";
 
                     mail($email, "Password reset request", $message);
                     echo("A reset link was sent to $email");
                 }else{
-                    echo("The token for this email already exists!");
+                    echo("The token for this email already exists! But we have sent one again. If still not received then click the button below.");
+                    $token = uniqid("", true);
+                    $loginService->storeTokenAgain($token);
+                    echo "<input type='submit' name='reqpass-button-again' value='Send request again?'>";
                 }
                 
             // }else{
@@ -126,6 +132,17 @@
             echo($e);
         }
     }
+
+    if(isset($_POST["reqpass-button-again"])){
+
+        $token = uniqid("", true);
+        $loginService->storeTokenAgain($token);
+        
+        echo("Sent.Check your email for the link.");
+
+    
+    }
+
 
     if(isset($_POST["resetpass-button"])){
         try{
