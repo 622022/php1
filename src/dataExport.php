@@ -87,14 +87,18 @@ if (isset($_POST["CSV-select"])) {
     // Enable to download this file
     $filename = "sampledata.csv";
 
+    // setting the file type to header for download
     header("Content-Description: File Transfer");
     header("Content-Disposition: attachment; filename=\"$filename\"");
     header("Content-Type: text/csv");
+
+    // get the uploaded file and open it
 
     $file = fopen("php://output", 'w');
     $header=array("id", "name", "email");
     fputcsv($file, $header);
 
+    // //iterate through the file to display the data
     foreach($result as $row)
     {
     $data = array();
@@ -109,7 +113,8 @@ if (isset($_POST["CSV-select"])) {
 if (isset($_POST["XLS-select"])) {
     // Enable to download this file
     $filename = "sampledata.xls";
-
+    
+    // get the uploaded file and open it
     header("Content-Description: File Transfer");
     header("Content-Disposition: attachment; filename=\"$filename\"");
     header("Content-Type: application/vnd.ms-excel");
@@ -118,6 +123,9 @@ if (isset($_POST["XLS-select"])) {
     $header=array("id", "name", "email");
     fputcsv($file, $header);
     $isPrintHeader=false;
+
+    // //iterate through the file to display the data
+
     foreach($result as $row)
     {
         if (! $isPrintHeader) {

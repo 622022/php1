@@ -41,6 +41,7 @@ if ($loginService->checkSession())
 		</section>
 
         <script>
+        // // using javascript to call the action when button is pressed
         document.getElementById("buybtn").onclick = function () {
         location.href = "payment.php";
         };

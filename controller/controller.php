@@ -6,9 +6,10 @@
     $searchService = searchService::getInstance();
 
     
-
+    // checks if the button is clicked and then calls the respective services to initiate tasks
     if (isset($_POST["login-button"])) {
         try {
+            // if logged in takes the user to dashboard
             if($loginService->login($_POST['login-email'], $_POST['login-password']))
             {
                 header("Location: ../src/dashboard.php");
@@ -25,7 +26,9 @@
 
     } 
     if (isset($_POST["register-button"])) {
+        // check to see if the user with the same email exists already
         $Check=$loginService->CheckUser($_POST['register-email']);
+        // check to see if the recaptcha is done
         $Captcha_chk = $loginService->captcha();
         try {
             if ($_POST['register-password'] == $_POST['register-repassword']) {
@@ -46,6 +49,8 @@
 
     if(isset($_POST["update-email"])){
         $Check=$loginService->CheckUser($_POST['new-email']);
+
+        // //getting the old email thorugh the session
         $oldEmail=$_SESSION['EMAIL'];
         $newEmail=$_POST['new-email'];
         

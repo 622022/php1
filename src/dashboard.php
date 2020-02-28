@@ -42,8 +42,6 @@ if ($loginService->checkSession())
         <h4>Users can be searched here!</h4>
         <form action="searchpage.php" method ="post">
             Username<input type="text" name="search-name" placeholder="Name to be searched" required>
-            <!-- Useremail<input type="text" name="search-email">
-            Register date<input type="text" name="search-date"> -->
             <button type="submit" name="search-button"> Search user</button>  
         </form>
 

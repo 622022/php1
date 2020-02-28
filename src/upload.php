@@ -81,6 +81,7 @@ if ($action == 'multiple') {
           $handle->image_x                 = 300;
           $handle->image_reflection_height = '25%';
           $handle->image_contrast          = 50;
+          $handle->image_rotate          = '90';
 
           $handle->process($dir_dest);
   
