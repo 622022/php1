@@ -111,9 +111,7 @@
                 if($loginService->checkTokenforEmailExists($email) == false){
                     $token = uniqid("", true);
                     //checks if the same value of token exists for an email
-                    if($loginService->CheckifSameTokenExists($token) == false){
-                        $token = uniqid("", true);
-                    }
+                    
                     $loginService->storeToken($email,$token);
                     $message = "Hello! Here is the link for you to reset your password http://622022.infhaarlem.nl/resetpass.php?token=$token\n" 
                     . "Follow the link to change your password.";
