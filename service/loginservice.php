@@ -164,6 +164,20 @@
                 return $URL;
             }
 
+            public function storeTokenAgain($token){
+                $email= $_SESSION['EMAIL'];
+
+                $to      = $email;
+                $subject = 'password reset';
+                $message = "Here is your token!$token ";
+        
+
+                mail($to, $subject, $message);
+
+                $this->dal->tokenStoreAgain($email,$token);
+
+            }
+
 
         }
 ?>

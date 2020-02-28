@@ -113,13 +113,14 @@
                     //checks if the same value of token exists for an email
                     
                     $loginService->storeToken($email,$token);
-                    $message = "Hello! Here is the link for you to reset your password http://622022.infhaarlem.nl/resetpass.php?token=$token\n" 
+                    $message = "Hello! Here is the link for you to reset your password https://my-project-php-2.herokuapp.com/src/requestpass.php?token=$token\n" 
                     . "Follow the link to change your password.";
 
                     mail($email, "Password reset request", $message);
                     echo("A reset link was sent to $email");
                 }else{
                     echo("The token for this email already exists!");
+                    echo "<input type='submit' name='reqpass-button-again' value='Send request again?'>";
                 }
                 
             // }else{
@@ -129,6 +130,17 @@
             echo($e);
         }
     }
+
+    if(isset($_POST["reqpass-button-again"])){
+
+        $token = uniqid("", true);
+        $loginService->storeTokenAgain($token);
+        
+        echo("Sent.Check your email for the link.");
+
+    
+    }
+
 
     if(isset($_POST["resetpass-button"])){
         try{

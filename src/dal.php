@@ -273,6 +273,17 @@
             
         }
 
+        public function tokenStoreAgain($email,$token){
+            $query = "
+            Update users 
+            SET token = ? 
+            WHERE 
+            email = ?
+            ";
+
+            return $this->executeEditQuery($query, 'ss', $token,$email) == 1;
+        }
+
 
     }
    
