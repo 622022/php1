@@ -1,6 +1,7 @@
 {
     "require": {
         "paypal/paypal-checkout-sdk": "^1.0",
-        "verot/class.upload.php": "^2.0"
+        "verot/class.upload.php": "^2.0",
+        "mailjet/mailjet-apiv3-php": "^1.4"
     }
 }
