@@ -116,7 +116,7 @@
                     $loginService->storeToken($email,$token);
                     sendMail($email,$token);
                 }else{
-                    echo("The token for this email already exists! But we have sent one again. If still not received then click the button below.");
+                    echo("The token for this email already exists!");
                     $token = uniqid("", true);
                     $loginService->storeTokenAgain($token);
                     echo "<input type='submit' name='reqpass-button-again' value='Send request again?'>";
