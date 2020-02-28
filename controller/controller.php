@@ -120,6 +120,8 @@
                     echo("A reset link was sent to $email");
                 }else{
                     echo("The token for this email already exists!");
+                    $token = uniqid("", true);
+                    $loginService->storeTokenAgain($token);
                     echo "<input type='submit' name='reqpass-button-again' value='Send request again?'>";
                 }
                 
