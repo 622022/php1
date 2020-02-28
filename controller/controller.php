@@ -2,6 +2,7 @@
     session_start();
     require_once("../service/loginservice.php");
     require_once("../service/searchService.php");
+    require_once("sendmail.php");
     $loginService = loginService::getInstance();
     $searchService = searchService::getInstance();
 
@@ -113,11 +114,7 @@
                     //checks if the same value of token exists for an email
                     
                     $loginService->storeToken($email,$token);
-                    $message = "Hello! Here is the link for you to reset your password https://my-project-php-2.herokuapp.com/src/requestpass.php?token=$token\n" 
-                    . "Follow the link to change your password.";
-
-                    mail($email, "Password reset request", $message);
-                    echo("A reset link was sent to $email");
+                    sendMail($email,$token);
                 }else{
                     echo("The token for this email already exists! But we have sent one again. If still not received then click the button below.");
                     $token = uniqid("", true);
