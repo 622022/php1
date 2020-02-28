@@ -119,7 +119,7 @@
                     mail($email, "Password reset request", $message);
                     echo("A reset link was sent to $email");
                 }else{
-                    echo("The token for this email already exists!");
+                    echo("The token for this email has been sent.");
                     $token = uniqid("", true);
                     $loginService->storeTokenAgain($token);
                     echo "<input type='submit' name='reqpass-button-again' value='Send request again?'>";
